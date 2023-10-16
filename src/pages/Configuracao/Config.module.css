@@ -1,0 +1,158 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    background-color: black;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+/* NavBar */
+
+.navContainer{
+    width: 100%;
+    height: 70px;
+    background-color: #1A1A1A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.search{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.search img{
+    width: 60px;
+    height: 60px;
+}
+
+.search input{
+    height: 30px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 1rem;
+    border: none;
+    outline: none;
+}
+
+.search input::placeholder{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.search button{
+    height: 30px;
+    width: 80px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    border-radius: 20px;
+    background-color: #530477;
+    cursor: pointer;
+    transform: 0.5s;
+}
+
+.search button:hover{
+    background-color: #3b0455;
+    opacity: 0.8;
+}
+
+.links ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    list-style: none;
+    gap: 20px;
+}
+
+#profile{
+    width: 50px;
+    height: 50px;
+}
+
+.links ul li a{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.links ul li a:hover{
+    color: #FFF;
+    opacity: 0.4;
+}
+
+/* Main */
+
+.foto{
+    position: absolute;
+    display: flex;
+    align-self: center;
+    margin-top: 5rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    z-index: 2;
+}
+.foto img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* config dos containers e posicionamento dos botoes */
+.buttoncontainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #222222;
+    align-self: center;
+    width: 22rem;
+    height: 25rem;
+    margin-top: 7rem;
+    border-radius: 15px;
+}
+.buttoncontainer button:first-child{
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.buttoncontainer button:not(:first-child){
+    margin-bottom: 30px;
+}
+
+/* personalização dos botões */
+.buttoncontainer button{
+    color:white;
+    width: 80%;
+    height: 20%;
+    border:0;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.buttoncontainer button:not(:last-child){
+    background-color: #808080; 
+}
+.buttoncontainer button:last-child{
+    background-color: red;
+}
+
+/* copyright */
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #665b5b;
+    font-size: 10px;
+    margin:0;
+    margin-bottom: 10px;  
+}

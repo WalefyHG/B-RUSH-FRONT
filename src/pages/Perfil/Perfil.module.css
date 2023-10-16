@@ -1,0 +1,363 @@
+.mainContainer{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    background-color: #111;
+}
+
+/* NavBar */
+
+.navContainer{
+    width: 100%;
+    height: 80px;
+    background-color: #1A1A1A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.search{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+#logoBrush{
+    width: 60px;
+    height: 60px;
+}
+
+#texto{
+    height: 30px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 1rem;
+    border: none;
+    outline: none;
+}
+
+#texto::placeholder{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#pesquisa{
+    height: 30px;
+    width: 80px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    border-radius: 20px;
+    background-color: #530477;
+    cursor: pointer;
+    transform: 0.5s;
+}
+
+#pesquisa:hover{
+    background-color: #3b0455;
+    opacity: 0.8;
+}
+
+.links ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    list-style: none;
+    gap: 20px;
+}
+
+#profile{
+    width: 50px;
+    height: 50px;
+}
+
+.links ul li a{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.links ul li a:hover{
+    color: #FFF;
+    opacity: 0.4;
+}
+
+/* Main */
+
+.main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.bannerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E6E6E6;
+    width: 100%;
+    height: 200px;
+}
+.imgbanner{
+    width:100%;
+    height: 200px;
+    position: absolute;
+}
+.bannerimg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+#iconCsgo{
+    position: absolute;
+    margin-top: 4.2rem;
+    margin-left: 3.6rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#iconCsgo a{
+    text-decoration: none;
+    color: #000;
+    width: 50px;
+    height: 50px;
+}
+
+.profileImage{
+    display: flex;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    z-index: 2;
+    margin-left: 30px;
+    gap: 20px;
+}
+
+#profile2{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card{
+    margin-top: 20px;
+}
+
+.card h1{
+    text-align: center;
+    background-color: #222;
+    color: #FFF;
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    padding: 16px;
+    border-radius: 10px;
+    height: 90px;
+}
+
+.imm{
+    width: 30px;
+    height: 30px;
+}
+
+.card h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #4A3F3F;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 270px;
+    height: auto;
+    padding: 8px 0;
+}
+
+.socialMedias{
+    align-self: flex-end;
+    padding: 0 1rem;
+    position: absolute;
+    right: 0;
+}
+
+.socialMedias img{
+    width: 30px;
+    height: 30px;
+}
+
+.socialMedias ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    
+}
+
+/* SideBar */
+
+.sidebar{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    margin: 2rem 0;
+}
+
+.btn{
+    color: #FFF;
+    cursor: pointer;
+    margin-left: -20px;
+    margin-right: 20px;
+}
+
+#toggleSidebar{
+    background: transparent;
+    color: white;
+    font-size: 40px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sidebar com animação */
+
+
+.sidebarContainer{
+    display: flex;
+    padding: 2rem;
+    width: 300px;
+    height: 100%;
+    background-color: #252925;
+    color: #FFF;
+    min-height: 100vh;
+    margin-bottom: 2rem;
+    border-radius: 0 0.8rem 0.8rem 0;
+}
+
+.show{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#h2{
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.sidebarContainer ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 20px;
+    height: 600px;
+}
+
+.sidebarContainer ul li{
+    width: 170px;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.sidebarContainer ul li a{
+    color: #FFF;
+    text-decoration: none;
+}
+
+.sidebarContainer ul span{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+
+.sidebarContainer ul li i{
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.sidebarContainer ul li:hover{
+    background-color: #3b0455;
+    opacity: 0.8;
+}
+
+#peri{
+    font-size: 20px;
+}
+
+/* Profile */
+
+
+.infoPlayerContainer{
+    display: flex;
+    margin: 20px auto;
+    width: 70rem;
+    max-width: 100%;
+    background-color: #222;
+    gap: 6rem;
+    color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.infoPlayerContainer .profilePicture{
+    width: 500px;
+    height: 500px;
+    background-color: #000;
+    border-radius: 10px;
+}
+
+#fallen{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    gap: 20px;
+}
+
+
+/* Footer */
+
+.footerContainer{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 10px;
+    margin-bottom: 2rem;
+}
+
+/* Media Queries */
