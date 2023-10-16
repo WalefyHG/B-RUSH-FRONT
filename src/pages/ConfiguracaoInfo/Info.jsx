@@ -74,7 +74,7 @@ const Info = () => {
           </div>
         </div>
         <footer className={classes.footer}>
-          <h2>Criado Pela B-Rush/2023</h2>
+          <h2>&copy; Criado Pela B-Rush/2023</h2>
         </footer>
       </div>
     </div>

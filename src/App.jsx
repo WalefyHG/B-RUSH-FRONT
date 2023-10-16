@@ -5,6 +5,7 @@ import Perfil from './pages/Perfil/Perfil'
 import Config from './pages/Configuracao/Config'
 import Cadastro from './pages/Cadastro/Cadastro'
 import Info from './pages/ConfiguracaoInfo/Info'
+import Hub from './pages/Hub/Hub'
 
 function App() {
 
@@ -25,6 +26,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/info' element={<Info/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/hub' element={<Hub/>}/>
         </Routes>
       </Router>
     </>
