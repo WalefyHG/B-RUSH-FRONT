@@ -28,7 +28,7 @@ function App() {
           <Route path='/info' element={<Info/>}/>
         </Routes>
         <Routes>
-          <Route path='/hub' element={<Hub/>}/>
+          <Route path='/teste' element={<Hub/>}/>
         </Routes>
       </Router>
     </>
