@@ -7,6 +7,7 @@ import Cadastro from './pages/Cadastro/Cadastro'
 import Info from './pages/ConfiguracaoInfo/Info'
 import Teste from './pages/Teste/Teste'
 import AlterSenha from './pages/AlterSenha/AlterSenha'
+import Ajuda from './pages/Ajuda/Ajuda'
 
 function App() {
 
@@ -30,6 +31,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/alterarSenha' element={<AlterSenha/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/ajuda' element={<Ajuda/>}/>
         </Routes>
         <Routes>
           <Route path='/teste' element={<Teste/>}/>

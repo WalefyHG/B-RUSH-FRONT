@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import classes from "./AlterSenha.module.css";
 
 const AlterSenha = () => {
+    
   return (
     <div className={classes.mainContainer}>
       <NavBar />
