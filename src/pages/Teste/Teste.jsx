@@ -1,6 +1,6 @@
 import classes from "./Teste.module.css";
 
-const Hub = () => {
+const Teste = () => {
   return (
     <div className={classes.mainContainer}>
       
@@ -8,4 +8,4 @@ const Hub = () => {
   );
 };
 
-export default Hub;
+export default Teste;
