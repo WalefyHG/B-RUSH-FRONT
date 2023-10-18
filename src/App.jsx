@@ -5,7 +5,8 @@ import Perfil from './pages/Perfil/Perfil'
 import Config from './pages/Configuracao/Config'
 import Cadastro from './pages/Cadastro/Cadastro'
 import Info from './pages/ConfiguracaoInfo/Info'
-import Hub from './pages/Hub/Hub'
+import Teste from './pages/Teste/Teste'
+import AlterSenha from './pages/AlterSenha/AlterSenha'
 
 function App() {
 
@@ -28,7 +29,10 @@ function App() {
           <Route path='/info' element={<Info/>}/>
         </Routes>
         <Routes>
-          <Route path='/teste' element={<Hub/>}/>
+          <Route path='/alterarSenha' element={<AlterSenha/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/teste' element={<Teste/>}/>
         </Routes>
       </Router>
     </>

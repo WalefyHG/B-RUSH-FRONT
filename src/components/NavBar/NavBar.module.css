@@ -62,13 +62,13 @@
 }
 
 #profile{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
 .links ul li a{
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
     opacity: 1;

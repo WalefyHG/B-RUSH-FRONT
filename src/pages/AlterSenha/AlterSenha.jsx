@@ -1,8 +1,8 @@
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
-import classes from "./Hub.module.css";
+import classes from "./AlterSenha.module.css";
 
-const Hub = () => {
+const AlterSenha = () => {
   return (
     <div className={classes.mainContainer}>
       <NavBar />
@@ -18,8 +18,8 @@ const Hub = () => {
         <label>Confirmar Senha: </label>
         <input type="password" className={classes.input} />
         <div className={classes.buttons}>
-          <input type="submit" value="Enviar" id={classes.enviar}/>
-          <input type="submit"value="Cancelar" id={classes.cancelar} />
+          <input type="submit" value="Enviar" id={classes.enviar} />
+          <input type="submit" value="Cancelar" id={classes.cancelar} />
         </div>
       </div>
       <Footer />
@@ -27,4 +27,4 @@ const Hub = () => {
   );
 };
 
-export default Hub;
+export default AlterSenha;
