@@ -1,0 +1,59 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Montserrat";
+    color: #f8f7f7;
+    gap: 20px;
+    background: black;
+}
+
+
+.card{
+    background-color: #141414ee;
+    width:500px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    margin: 0 auto;
+    margin-top: 8rem;
+    align-items: center;
+    padding-top: 4rem;
+    border-radius: 25px;
+   }
+   
+   
+
+.btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    width: 85%;
+}
+
+.cei{
+    border-radius: 25px;
+    background-color: gray;
+    color:white;
+    border: 1px solid black;
+    font-size: 20px;
+    padding: 5px 15px;
+}
+
+.cei:hover{
+    background-color: rgb(86, 81, 81);
+    color: white;
+    cursor: pointer;
+}
+
+#del{
+background-color: red;
+}
+
+#del:hover{
+    background-color: rgb(211, 12, 12);
+    color: white;
+    cursor: pointer;
+}

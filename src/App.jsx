@@ -8,6 +8,7 @@ import Info from './pages/ConfiguracaoInfo/Info'
 import Teste from './pages/Teste/Teste'
 import AlterSenha from './pages/AlterSenha/AlterSenha'
 import Ajuda from './pages/Ajuda/Ajuda'
+import TesteForm from './pages/TestForm/TesteForm'
 
 function App() {
 
@@ -34,6 +35,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/ajuda' element={<Ajuda/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/testeForm' element={<TesteForm/>}/>
         </Routes>
         <Routes>
           <Route path='/teste' element={<Teste/>}/>

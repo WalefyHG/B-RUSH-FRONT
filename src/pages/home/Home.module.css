@@ -1,107 +1,117 @@
-.main{
-    font-family: 'Poppins', sans-serif;
-    background-image: url(/backgroundLogin.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.mainContainer{
+    font-family: 'Montserrat';
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url("/backgroundLogin.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    gap: 1rem;
+    width: 35rem;
+    height: 30rem;
+    color: white;
+    background-color: #181515;
+    border-radius: 20px 0px 20px 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
 }
-.container {
-    width: 550px;
-    height: 520px;
-    background: #b03c81;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-radius: 75px 0px 75px 75px;
+
+
+#icon{
+    width: 8rem;
+    height: 8rem;
+    margin-bottom: 1rem;
 }
-#profiles {
-    width: 190px;
-    border-radius: 90%;
-    box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
-}
-.button {
-    width: 60%;
-    padding: 10px 10px;
-    margin: 10px 0px;
+
+.inputText{
+    width: 22rem;
+    height: 2.5rem;
+    color: white;
     border: none;
+    padding-left: 1rem;
+    font-size: 1rem;
     outline: none;
-    font-size: 18px;
-    background: none;
-    border-bottom: 2px solid #fff;
-    color: #fff;
-    margin-top: -10%;
-}
-.button::placeholder {
-    color: #fff;
-    transition: opacity 0.2s ease-in-out;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    font-size: 0.9rem;
+    font-family: 'Montserrat';
 }
 
-.button:focus::placeholder{
-    opacity: 40%;
+.inputText::placeholder{
+    color: rgba(255, 255, 255, 0.535);
 }
 
-.botoes {
-    width: 80%;
+.inputText:focus{
+    border-bottom: 1px solid #7f0f30;
+}
+
+.sideButtons{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    width: 22rem;
 }
 
-.check {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: start;
-    color: #fff;
-    font-size: 18px;
-    width: 70%;
-    height: 70%;
-    margin-top: -20%;
-}
-
-.lembrarMe {
-    display: flex;
-    align-items: center;
-    color: #fff;
-}
-
-.lembre{
-    margin-left: 10%;
-    margin-top: -20%;
-}
-
-.container label {
-    font-size: 15px;
-}
-.container span {
-    font-size: 15px;
-    color: #fff;
-}
-
-#btn2{
-    width: 110px;
-    height: 40px;
-    font-size: 20px;
-    color:white;
-    background-color: #544b6f;
+.button{
+    font-family: 'Montserrat';
+    margin-top: 1.5rem;
+    width: 5.5rem;
+    height: 2rem;
     border: none;
-    border-radius: 30px;
+    border-radius: 20px;
+    background-color: #7f0f30;
+    color: white;
+    font-size: 0.8rem;
     cursor: pointer;
-    margin-top: -20%;
-    box-shadow: 2px 4px 10px black;
+    outline: none;
+    margin-bottom: 1rem;
 }
 
-#cadast{
-    margin-top: -10%;
+.button:hover{
+    background-color: #5f0f30;
 }
 
-#error{
-    color: aqua;
-    font-size: 15px;
-    margin-top: -15%;
+.button:active{
+    background-color: #3f0f30;
+}
+
+#cancelar{
+    background-color: rgb(12, 12, 109);
+}
+
+#cancelar:hover{
+    background-color: rgb(12, 12, 89);
+}
+
+.select{
+    display: flex;
+    gap: 1rem;
+    width: 22rem;
+    font-family: 'Montserrat';
+    font-size: 0.8rem;
+}
+
+#esqueceu{
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.535);
+}
+
+#esqueceu a{
+    color: white;
+    text-decoration: none;
+}
+
+#esqueceu a:hover{
+    color: #7e7d7e;
+}
+
+#esqueceu a:active{
+    color: #5e5d5e;
 }

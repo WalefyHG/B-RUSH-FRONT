@@ -1,6 +1,13 @@
 import classes from "./Info.module.css";
+import { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import  ButtonDatePicker  from "../../components/CustomDataPicker/CustomDataPicker";
 
 const Info = () => {
+
+  const [value, setValue] = useState(null);
+
   return (
     <div>
       <div className={classes.mainContainer}>
@@ -62,7 +69,13 @@ const Info = () => {
             <option value="outro">Outro</option>
           </select>
           <label>Data de Nascimento: </label>
-          <input type="date" id="datanascimento" />
+
+      <ButtonDatePicker
+        label={value == null ? null : value.format('MM/DD/YYYY')}
+        value={value}
+        onChange={(newValue) => setValue(newValue)}
+      />
+
           <label>Jogo: </label>
           <select name="jogo" id="jogo">
             <option value="lol">League of Legends</option>
