@@ -9,6 +9,7 @@ import Teste from './pages/Teste/Teste'
 import AlterSenha from './pages/AlterSenha/AlterSenha'
 import Ajuda from './pages/Ajuda/Ajuda'
 import TesteForm from './pages/TestForm/TesteForm'
+import PrivateRouter from './components/PrivateRouter/PrivateRouter'
 
 function App() {
 
@@ -18,9 +19,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
         </Routes>
+        <PrivateRouter>
         <Routes>
           <Route path='/perfil' element={<Perfil/>}/>
         </Routes>
+        </PrivateRouter>
         <Routes>
           <Route path='/config' element={<Config/>}/>
         </Routes>

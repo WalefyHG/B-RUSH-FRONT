@@ -44,13 +44,16 @@
 
 .input{
     outline: none;
-    border: 1px solid white;
+    border: 0;
+    border-bottom: 1px solid white;
     width: 80%;
     height: 2rem;
-    background-color: #222;
+    background-color: transparent;
     font-size: 1.4rem;
     color: white;
     margin-bottom: 10px;
+    padding-left: 10px;
+
 }
 
 .buttons{
