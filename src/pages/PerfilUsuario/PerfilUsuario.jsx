@@ -10,20 +10,22 @@ import {
   FaArrowCircleRight,
 } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
-import classes from "./Perfil.module.css";
+import classes from "./PerfilUsuario.module.css";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from '../../components/Footer/Footer';
+import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 
 const Perfil = () => {
   const [perfilData, setPerfilData] = useState(undefined);
+  const {user_name} = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       const token = Cookies.get("token");
       if (token) {
         try {
-          const response = await axios.get("http://127.0.0.1:8000/api/users/perfil", {
+          const response = await axios.get(`http://127.0.0.1:8000/api/users/perfil/${user_name}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -38,9 +40,10 @@ const Perfil = () => {
     fetchData();
   }, []);
 
-  if(!perfilData) {
+
+  if(!perfilData){
     return (
-      <Loading/>
+        <Loading/>
     )
   }
 

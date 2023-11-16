@@ -1,13 +1,31 @@
 import classes from "./NavBar.module.css";
+import Cookies from "js-cookie";
+import { useNavigate  } from 'react-router-dom';
+import { useState } from "react";
 const NavBar = () => {
+  const [user_firstName, setUserFirstName] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Limpe os cookies e tokens
+    Cookies.remove("token");
+
+    // Redirecione o usuário para a página de login (ou qualquer outra página desejada)
+    navigate("/");
+  };
+
+  const handleSearch = () => {
+    navigate(`/pesquisar/${user_firstName}`);
+  }
+
   return (
     <div>
       <nav>
         <div className={classes.navContainer}>
           <div className={classes.search}>
-            <img src="/Logo2.png" id={classes.logoBrush} alt="Logo B-Rush" />
-            <input type="text" id={classes.texto} placeholder="Pesquise Aqui" />
-            <button type="submit" id={classes.pesquisa}>
+            <img src="/FaviconLight.png" id={classes.logoBrush} alt="Logo B-Rush" />
+            <input type="text" id={classes.texto} value={user_firstName} name="user_firstName" onChange={(e) => setUserFirstName(e.target.value)} placeholder="Pesquise Aqui" />
+            <button type="submit" onClick={handleSearch} id={classes.pesquisa}>
               Search
             </button>
           </div>
@@ -29,7 +47,7 @@ const NavBar = () => {
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a onClick={handleLogout}>
                   <img
                     src="/profile.png"
                     id={classes.profile}

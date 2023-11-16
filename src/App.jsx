@@ -7,9 +7,13 @@ import Cadastro from './pages/Cadastro/Cadastro'
 import Info from './pages/ConfiguracaoInfo/Info'
 import Teste from './pages/Teste/Teste'
 import AlterSenha from './pages/AlterSenha/AlterSenha'
+import Loading from './components/Loading/Loading'
 import Ajuda from './pages/Ajuda/Ajuda'
 import TesteForm from './pages/TestForm/TesteForm'
 import PrivateRouter from './components/PrivateRouter/PrivateRouter'
+import PesquisaResults from './pages/searchResults/PesquisaResults'
+import PerfilUsuario from './pages/PerfilUsuario/PerfilUsuario'
+import Notification from './pages/Notification/Notification'
 
 function App() {
 
@@ -19,11 +23,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
         </Routes>
-        <PrivateRouter>
         <Routes>
-          <Route path='/perfil' element={<Perfil/>}/>
-        </Routes>
+          <Route path='/perfil' element={
+        <PrivateRouter>
+          <Perfil/>
         </PrivateRouter>
+      }/>
+        </Routes>
         <Routes>
           <Route path='/config' element={<Config/>}/>
         </Routes>
@@ -44,6 +50,24 @@ function App() {
         </Routes>
         <Routes>
           <Route path='/teste' element={<Teste/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/loading' element={<Loading/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/notification' element={<Notification/>}/>
+        </Routes>
+        <Routes>
+          <Route path='/pesquisar/:user_firstName' element={
+          <PrivateRouter>
+          <PesquisaResults/>
+          </PrivateRouter>
+          }/>
+          <Route path='/perfil/:user_name' element={
+          <PrivateRouter>
+          <PerfilUsuario/>
+          </PrivateRouter>
+          }/>
         </Routes>
       </Router>
     </>

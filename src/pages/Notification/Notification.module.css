@@ -1,0 +1,139 @@
+.mainContainer{
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Montserrat';
+}
+
+
+.container{
+  position: relative;
+  text-align: center;
+  width: 40rem;
+  height: 30rem;
+  background: url('/FundoImagemNoti.png');
+  border-radius: 2rem;
+}
+
+.imagemDiv{
+  width: 25%;
+  height: 25%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.imagemDiv img{
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+}
+
+.temp{
+  position: absolute;
+  top: 20px;
+  right: 6px;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.temp img{
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+}
+
+.otpDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.otpInput{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.otpDiv button{
+  width: 7rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: #7a0355;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.otpDiv button:hover{
+  background-color: #7a0355;
+  opacity: 0.8;
+}
+
+.otpDiv button:active{
+  background-color: #7a0355;
+  opacity: 0.8;
+}
+
+.container a{
+  text-decoration: none;
+  color: #7a0355;
+  cursor: pointer;
+}
+
+.container a:hover{
+  color: #d2289c;
+}
+
+.containerInputs{
+  display: flex;
+  flex-direction: row;
+  column-gap: 2rem;
+}
+
+.inputs{
+  caret-color: transparent;
+  height: 55px;
+  border: 0;
+  border-radius: 2rem;
+  outline: none;
+  background-color: #666;
+  text-align: center;
+  font-size: 3.2rem;
+  color: white;
+  font-family: 'Montserrat';
+  box-sizing: border-box;
+}
+
+.inputs::-webkit-inner-spin-button,
+.inputs::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputs:valid{
+  border-color: #7a0355;
+  box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+}
+
+
+.login{
+  margin-top: 1.5rem;
+}

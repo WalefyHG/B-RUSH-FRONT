@@ -1,75 +1,86 @@
-.mainContainer{
-    font-family: 'Poppins', sans-serif;
-    background-image: url(/backgroundLogin.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+.mainContainer {
+  font-family: "Poppins", sans-serif;
+  background-image: url(/backgroundLogin.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Montserrat";
 }
 
-
-.contain{
-    width: 550px;
-    height: 520px;
-    background: #560000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-radius: 75px 0px 75px 75px;
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 55rem;
+  height: 40.4rem;
+  color: white;
+  background-color: #181515;
+  border-radius: 20px 0px 20px 20px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
-.formulario{
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 1rem;
+  width: 20rem;
+}
+
+.header img {
+  width: 7rem;
+  height: 7rem;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.formContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #222;
+  padding: 1.5rem;
+  border: 1px solid #333;
+  
+}
+
+.formContainer form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.inputsContainer {
+  min-height: 200px;
+}
+
+.action{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.action button{
+    padding: 0.5rem 1rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: #222;
     color: white;
-}
-
-.formulario label{
-    font-size: 16px;
-}
-
-.button{
-    display: flex;
-    justify-content: center;
-}
-
-.checkbox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3%;
-}
-
-.checkbox label{
-    margin-right: 5%;
-    margin-left: 2%;
-}
-
-.inputs{
-    width: 100%;
-    padding: 2px 2px;
-    margin: 5px 0px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    background: none;
-    border-bottom: 2px solid #fff;
-    color: rgb(255,255,255, 0.9);
-    
-}
-
-.btn{
-    font-family: 'Roboto condensed', sans-serif;
-    width: 90px;
-    height: 40px;
-    font-size: 16px;
-    margin-top: 8%;
-    color:white;
-    background-color: #544b6f;
-    border: none;
-    border-radius: 30px;
+    font-size: 0.9rem;
     cursor: pointer;
-    box-shadow: 2px 1px 10px black;
+    transition: 0.3s;
+    gap: 0.5rem;
+    border-radius: 15px;
+}
+
+.action button:hover{
+    background-color: #333;
 }

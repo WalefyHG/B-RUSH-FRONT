@@ -3,10 +3,10 @@ import classes from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <div>
+    <div className={classes.footerContainer}>
       <footer className={classes.footer}>
-          <h2> {<FaCopyright />} Criado Pela B-Rush/2023</h2>
-        </footer>
+        <h2><FaCopyright /> Criado Pela B-Rush/2023</h2>
+      </footer>
     </div>
   )
 }

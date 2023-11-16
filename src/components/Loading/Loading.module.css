@@ -1,0 +1,26 @@
+.mainContainer{
+    min-height: 100vh;
+    background-color: black;
+    font-family: 'Montserrat';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.mainContainer img{
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+
+
+.text{
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    overflow: hidden;
+}
