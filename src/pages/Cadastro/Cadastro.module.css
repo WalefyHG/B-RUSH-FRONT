@@ -13,8 +13,10 @@
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 55rem;
-  height: 40.4rem;
+  height: 40.8rem;
   color: white;
   background-color: #181515;
   border-radius: 20px 0px 20px 20px;
@@ -26,7 +28,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   margin-top: 1rem;
   width: 20rem;
 }
@@ -45,10 +46,10 @@
 
 .formContainer {
   max-width: 600px;
-  margin: 0 auto;
   background-color: #222;
   padding: 1.5rem;
   border: 1px solid #333;
+  margin-bottom: 1.5rem;
   
 }
 
@@ -65,6 +66,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .action button{

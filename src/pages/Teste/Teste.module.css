@@ -4,56 +4,155 @@
     min-height: 100vh;
     font-family: "Montserrat";
     color: #f8f7f7;
-    gap: 20px;
     background: black;
 }
 
 
 .card{
     background-color: #141414ee;
+    width:  500px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    gap: 1rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+    align-items: center;
+    padding: 4rem;
+    border-radius: 25px;
+}
+
+.card input{
+    height: 30px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 1rem;
+    border: none;
+    outline: none;
+}
+
+.card textarea{
+    height: 90px;
+    width: 300px;
+    border-radius: 20px;
+    padding: 10px 1rem;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    
+}
+
+
+.card button{
+    height: 30px;
+    width: 150px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    border-radius: 20px;
+    background-color: #530477;
+    cursor: pointer;
+    transform: 0.5s;
+}
+
+.card button:hover{
+    background-color: #3b0455;
+    opacity: 0.8;
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search input{
+    height: 30px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 1rem;
+    border: none;
+    outline: none;
+}
+
+.search button{
+    height: 30px;
+    width: 80px;
+    border: none;
+    outline: none;
+    color: #FFF;
+    border-radius: 20px;
+    background-color: #530477;
+    cursor: pointer;
+    transform: 0.5s;
+}
+
+.search button:hover{
+    background-color: #3b0455;
+    opacity: 0.8;
+}
+   
+   
+
+.card2{
+    background-color: #141414ee;
     width:500px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
     margin: 0 auto;
-    margin-top: 8rem;
+    margin-top: 2rem;
     align-items: center;
     padding-top: 4rem;
     border-radius: 25px;
-   }
-   
-   
+    gap: 1rem;
+}
 
-.btn{
+.edit{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    width: 100%;
+}
+
+.card2 svg{
+    display: flex;
+    align-self: flex-end;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: red;
+    cursor: pointer;
+}
+
+#editando{
+    color: rgb(11, 11, 205);
+}
+
+#editando:hover{
+    color: rgb(5, 5, 86);
+}
+
+.card2 svg:hover{
+    color: rgb(134, 25, 25);
+}
+
+.news{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 80%;
+    border: 1px solid white;
     margin-bottom: 2rem;
-    width: 85%;
+    padding: 1rem;
+    text-align: justify;
+    word-break: break-all;
 }
 
-.cei{
-    border-radius: 25px;
-    background-color: gray;
-    color:white;
-    border: 1px solid black;
-    font-size: 20px;
-    padding: 5px 15px;
-}
-
-.cei:hover{
-    background-color: rgb(86, 81, 81);
-    color: white;
-    cursor: pointer;
-}
-
-#del{
-background-color: red;
-}
-
-#del:hover{
-    background-color: rgb(211, 12, 12);
-    color: white;
-    cursor: pointer;
+.news img{
+    width: 7rem;
+    height: 5rem;
+    margin-top: 1rem;
 }

@@ -28,7 +28,9 @@
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.18.0",
-    "reactjs-otp-input": "^2.0.8"
+    "reactjs-otp-input": "^2.0.8",
+    "sweetalert2": "^11.10.0",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

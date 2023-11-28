@@ -61,6 +61,11 @@
   margin-top: 1rem;
 }
 
+.otpDiv h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
 .otpInput{
   width: 100%;
   display: flex;
@@ -112,7 +117,7 @@
   caret-color: transparent;
   height: 55px;
   border: 0;
-  border-radius: 2rem;
+  border-radius: 50%;
   outline: none;
   background-color: #666;
   text-align: center;

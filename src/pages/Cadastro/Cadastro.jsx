@@ -3,6 +3,7 @@ import classes from "./Cadastro.module.css";
 import Name  from "../../formSteps/Name";
 import Upload  from "../../formSteps/Upload";
 import Password from "../../formSteps/Password";
+import Games from "../../formSteps/Games";
 import {
   FaChevronRight,
   FaChevronLeft
@@ -22,6 +23,9 @@ const formsTemplate = {
   user_email: "",
   user_password: "",
   user_firstName: "",
+  user_idioma: "Português",
+  user_games: "CS:GO",
+  user_pais: "Brasil",
 }
 
 const Cadastro = () => {
@@ -41,7 +45,8 @@ const Cadastro = () => {
   const formsComponents = [
   <Name data={data} updateFieldHandler={updateFieldHandler} />, 
   <Upload data={data} updateFieldHandler={updateFieldHandler} />, 
-  <Password data={data} updateFieldHandler={updateFieldHandler} />]
+  <Password data={data} updateFieldHandler={updateFieldHandler} />,
+  <Games data={data} updateFieldHandler={updateFieldHandler} />]
 
   const {currentStep, currentComponent, changeSteps, isLastStep, isFirstStep} = FormsData(formsComponents);
 

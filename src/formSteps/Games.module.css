@@ -1,0 +1,81 @@
+.formControl{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.formControl label{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.formControl input{
+    padding: 0.5rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    font-size: 1rem;
+    outline: none;
+    color: white;
+}
+
+.customselect {
+    position: relative;
+    display: inline-block;
+}    .customselect select {
+        font-family: 'Montserrat';
+        font-size: large;
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px 15px;
+        outline: 0;
+        border: 2px solid grey;
+        border-radius: 0px;
+        background: transparent;
+        color:rgb(189, 189, 189);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid white;
+    }
+        .customselect select::-ms-expand {
+            display: none;
+        }
+        .customselect select:hover {
+            color: white;
+        }
+        .customselect select:focus {
+            color:white;
+        }
+        .customselect select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .customselect select option{
+            background-color: black;
+            border: none;
+            outline: none;
+        }
+.select_arrow {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    width: 0px;
+    height: 0px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.customselect select:hover ~ .select_arrow,
+.customselect select:focus ~ .select_arrow {
+    border-color: white;
+}
+.customselect select:disabled ~ .select_arrow {
+    border-top-color: white;
+}

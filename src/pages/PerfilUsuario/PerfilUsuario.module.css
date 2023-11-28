@@ -315,9 +315,8 @@
 
 .infoPlayerContainer{
     display: flex;
-    margin: 20px auto;
+    margin: 0 auto;
     width: 70rem;
-    max-width: 100%;
     background-color: #222;
     gap: 6rem;
     color: #FFF;

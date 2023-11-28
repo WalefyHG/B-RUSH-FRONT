@@ -4,9 +4,9 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
-
+/* NavBar */
 
 .navContainer{
     width: 100%;
@@ -30,7 +30,6 @@
 }
 
 .search input{
-    background-color: white;
     height: 30px;
     width: 200px;
     border-radius: 20px;
@@ -71,13 +70,13 @@
 }
 
 #profile{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
 }
 
 .links ul li a{
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
     opacity: 1;
@@ -89,58 +88,217 @@
     opacity: 0.4;
 }
 
-/* Main */
-
-.foto{
-    position: absolute;
+/* container geral */
+.containerGeral{
     display: flex;
+    width: 100%;
+    height: 90%;
+    justify-content: center;
+    padding: 2rem;
+    gap: 5rem;
+}
+
+/* */
+
+/* primeiro container */
+.firstContainer{
+    background-color: #1A1A1A;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 350px;
+    border-radius: 20px;
+    padding: 1rem;
+    color:white;
+}
+
+.pfpContainer{
     align-self: center;
-    margin-top: 5rem;
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
-    z-index: 2;
+    
 }
-.foto img{
+.pfp{
+    object-fit: cover;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    object-fit: cover;
 }
 
-/* container*/
-.inputcontainer{
+#nome{
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: #222222;
     align-self: center;
-    width: 22rem;
-    height: 25rem;
-    margin-top: 7rem;
-    border-radius: 15px;
-}
-
-/* inputs */
-.inputcontainer label{
-    color:white;
-}
-.inputcontainer input{
-    background: none;
-}
-
-.buttonContain{
-    color: white;
-}
-
-/* copyright */
-.footer{
-    width: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
+    background-color: #2a033f;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 20px;
+    font-size: 1.2rem;	
+}
+#emailesenha{
+    padding:20px
+
+}
+#emailesenha .data{
+    margin-top: 20px;
+}
+
+/* */
+/* segundo container */
+.secondContainer{
+    color:white;
+    background-color: #1A1A1A;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 90%;
+    border-radius:20px;
+    padding: 1rem;
+}
+.inputsconfig{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+.inputsconfig input{
+    background-color: transparent;
+    color:rgb(189, 189, 189);
+    border-color: grey;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 0.5rem;
+    font-size: large;
+}
+
+.inputsconfig input:focus{
+    border-bottom: 1px solid rgb(77, 7, 7);
+
+}
+
+.inputsconfig input:active{
+    border-bottom: 1px solid rgb(77, 7, 7);
+}
+
+.inputsconfig input[type="date"]{
+    border: none;
+}
+
+/* .customselect{
+    display: flex;
+    flex-direction: column;
+    background: url(../images/seta-para-baixo.png) no-repeat right center;
+    width: 120px;
+    height: 90px;
+    overflow: hidden;
+}
+.customselect select{
+    appearance: none; /* Remove default select arrow */
+    /* -webkit-appearance: none; Remove default select arrow for Chrome */
+    /* -moz-appearance: none; Remove default select arrow for Firefox */
+    /* background: transparent; Make select background transparent */
+/* } */
+/* .select-selected{
+    background-color: red;
+} */ 
+
+
+
+.customselect {
+    position: relative;
+    display: inline-block;
+}    .customselect select {
+        font-family: 'Montserrat';
+        font-size: large;
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        padding: 10px 15px;
+        outline: 0;
+        border: 2px solid grey;
+        border-radius: 0px;
+        background: transparent;
+        color:rgb(189, 189, 189);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid white;
+    }
+        .customselect select::-ms-expand {
+            display: none;
+        }
+        .customselect select:hover {
+            color: white;
+        }
+        .customselect select:focus {
+            color:white;
+        }
+        .customselect select:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .customselect select option{
+            background-color: black;
+            border: none;
+            outline: none;
+        }
+.select_arrow {
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    width: 0px;
+    height: 0px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.customselect select:hover ~ .select_arrow,
+.customselect select:focus ~ .select_arrow {
+    border-color: white;
+}
+.customselect select:disabled ~ .select_arrow {
+    border-top-color: white;
+}
+
+
+/* */
+/* botões */
+.botoes{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.botoes .voltar{
+    background-color: red;
+}
+.botoes .salvar{
+    background-color: #530477;
+}
+.botoes button{
+    cursor: pointer;
+    font-size:large;
+    width: 90px;
+    height: 30px;
+    border-radius: 20px;
+    border: 0;
     color: white;
-    font-size: 10px;
-    margin:0;
-    margin-bottom: 10px;  
+    font-family: 'Montserrat';
+}
+
+.botoes .voltar:hover{
+    background-color: rgb(152, 18, 18);
+}
+
+.botoes .salvar:hover{
+    background-color: #290639;
 }
