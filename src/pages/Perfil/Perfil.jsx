@@ -17,6 +17,10 @@ import Loading from "../../components/Loading/Loading";
 
 const Perfil = () => {
   const [perfilData, setPerfilData] = useState(undefined);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +42,30 @@ const Perfil = () => {
     fetchData();
   }, []);
 
+
+  const openSocialMediaLink = (link) => {
+    if (link) {
+      window.open(link, "_blank");
+    }
+  };
+
+  const formatData = (perfil) =>{
+
+    const data = perfil;
+    const dataFormatada = data.split('T')[0].split('-').reverse().join('/');
+    return dataFormatada;
+  }
+
+  const idade = (perfil) =>{
+    const data = perfil;
+    const dataFormatada = data.split('T')[0].split('-').reverse().join('/');
+    const dataAtual = new Date();
+    const anoAtual = dataAtual.getFullYear();
+    const anoNascimento = dataFormatada.split('/')[2];
+    const idade = anoAtual - anoNascimento;
+    return idade;
+  }
+
   if(!perfilData) {
     return (
       <Loading/>
@@ -47,11 +75,16 @@ const Perfil = () => {
   return (
     <div className={classes.mainContainer}>
       <NavBar />
-        <main className={classes.main}>
+        <main className={`${classes.main} ${sidebarOpen ? classes.sidebarOpen : ""}`}>
           <section>
             <div className={classes.bannerContainer}>
               <div className={classes.imgbanner}>
-                <img src={"/Perfil/banner2.png"} className={classes.bannerimg} />
+                {perfilData.user_banner ? (
+                  <img src={`http://127.0.0.1:8000/${perfilData.user_banner}`} className={classes.bannerimg} />
+                ) : (
+                  <img src={"/Perfil/banner2.png"} className={classes.bannerimg} />
+                ) }
+                
               </div>
               <div className={classes.profileImage}>
                 <img
@@ -82,22 +115,22 @@ const Perfil = () => {
               <div className={classes.socialMedias}>
                 <ul>
                   <li>
-                    <a href="#">
+                    <a onClick={() => openSocialMediaLink(perfilData.user_instagram)} >
                       <img src="/logos/instagram.png" alt="Instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a onClick={() => openSocialMediaLink(perfilData.user_twitter)} >
                       <img src="/logos/twitter.png" alt="Twitter" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a onClick={() => openSocialMediaLink(perfilData.user_twitch)} >
                       <img src="/logos/twitch.png" alt="Twitch" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a onClick={() => openSocialMediaLink(perfilData.user_youtube)} >
                       <img src="/logos/youtube.png" alt="Youtube" />
                     </a>
                   </li>
@@ -106,7 +139,7 @@ const Perfil = () => {
             </div>
           </section>
           <section className={classes.sidebar}>
-            <div className={classes.sidebarContainer}>
+            <div className={`${classes.sidebarContainer} ${sidebarOpen ? classes.show : ""}`}>
               <ul>
                 <h2 id="h2">Navegue pelo perfil</h2>
                 <li>
@@ -140,7 +173,7 @@ const Perfil = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a href="/config">
                     <FaGear />
                     <span>Configurações</span>
                   </a>
@@ -149,24 +182,27 @@ const Perfil = () => {
             </div>
             <div className={classes.btn}>
               <button id={classes.toggleSidebar}>
-                <FaArrowCircleRight />
+                <FaArrowCircleRight onClick={toggleSidebar} />
               </button>
             </div>
             <div className={classes.infoPlayerContainer}>
               <div className={classes.profilePicture}>
                 <img
-                  src="/Perfil/fallen.jpg"
+                  src={`http://127.0.0.1:8000${perfilData.user_image}`}
                   alt="Banner"
                   id={classes.fallen}
                 />
               </div>
               <div  className={classes.text}>
-                <h2>{perfilData.user_name}</h2>
-                <h2>Game: Counter-Strike : GO</h2>
-                <h2>Equipe: Imperial Esports</h2>
-                <h2>Posição: Leader/AWPer</h2>
-                <h2>Idade: 31</h2>
-                <h2>Status: Ativo</h2>
+                <h2>Usuario: {perfilData.user_name}</h2>
+                <h2>Game: {perfilData.user_games}</h2>
+                <h2>Data de Nascimento: {formatData(perfilData.user_birthday)}</h2>
+                <h2>Nacionalidade: {perfilData.user_pais}</h2>
+                <h2>Idade: {idade(perfilData.user_birthday)} anos </h2>
+                {perfilData.is_confirmed ? 
+                <h2>Status: Ativa</h2> 
+                : 
+                <h2>Status: Inativa</h2>}
               </div>
             </div>
           </section>

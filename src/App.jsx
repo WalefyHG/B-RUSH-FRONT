@@ -14,6 +14,7 @@ import PrivateRouter from "./components/PrivateRouter/PrivateRouter";
 import PesquisaResults from "./pages/searchResults/PesquisaResults";
 import PerfilUsuario from "./pages/PerfilUsuario/PerfilUsuario";
 import Notification from "./pages/Notification/Notification";
+import RedeSociais from "./pages/RedesSociais/RedesSociais"; 
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/notification" element={<Notification />} />
+        </Routes>
+        <Routes>
+          <Route path="/redes_sociais" element={<RedeSociais />} />
         </Routes>
         <Routes>
           <Route
