@@ -1,10 +1,15 @@
 import classes from "./NavBar.module.css";
 import Cookies from "js-cookie";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate, useParams  } from 'react-router-dom';
 import { useState } from "react";
-const NavBar = () => {
+import { FaDoorOpen, FaRegNewspaper } from "react-icons/fa";
+import { IoPersonCircle } from "react-icons/io5";
+
+const NavBar = ({ user }) => {
   const [user_firstName, setUserFirstName] = useState('');
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   const handleLogout = () => {
     // Limpe os cookies e tokens
@@ -17,6 +22,12 @@ const NavBar = () => {
   const handleSearch = () => {
     navigate(`/pesquisar/${user_firstName}`);
   }
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  }
+
+  
 
   return (
     <div>
@@ -32,28 +43,24 @@ const NavBar = () => {
           <div className={classes.links}>
             <ul className={classes.link}>
               <li>
-                <a href="#" id="h">
-                  Games
-                </a>
-              </li>
-              <li>
-                <a href="#" id="s">
-                  Sobre
-                </a>
-              </li>
-              <li>
-                <a href="#" id="c">
-                  Contato
-                </a>
-              </li>
-              <li>
-                <a onClick={handleLogout}>
+                <a onClick={handleModal}>
                   <img
-                    src="/profile.png"
+                    src={`http://127.0.0.1:8000/${user.user_image}`}
                     id={classes.profile}
                     alt="Icone de Perfil"
                   />
+                  <p>{user.user_firstName}</p>
                 </a>
+                {isModalOpen && (
+                  <div className={classes.modal}>
+                    {/* Adicione o conteúdo do seu modal aqui */}
+                    <div className={classes.conteudo}>
+                      <button onClick={() => navigate('/perfil')}><IoPersonCircle/> Perfil</button>
+                      <button onClick={() => navigate('/hub')}><FaRegNewspaper/> Hub</button>
+                      <button id={classes.logout} onClick={handleLogout}><FaDoorOpen/> Logout</button>
+                    </div>
+                  </div>
+                )}
               </li>
             </ul>
           </div>

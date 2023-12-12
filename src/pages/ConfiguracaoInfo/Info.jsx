@@ -6,6 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 const Info = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -14,6 +15,21 @@ const Info = () => {
   const [reload, setReload] = useState(false)
   const navigate = useNavigate();
 
+
+  const Toast = Swal.mixin({
+    background: "#555",
+    color: "#fff",
+    width: 300,
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  })
 
   const handleInputChange = (key, value) => {
     setData((prevData) => ({
@@ -78,6 +94,13 @@ const Info = () => {
       setExistingData(response.data);
       if(response.status === 200){
         setReload(!reload)
+        Toast.fire({
+          icon: "success",
+          title: "Dados atualizados com sucesso!",
+        });
+        setTimeout(() => {
+          navigate("/perfil");
+        }, 3000)
       }
 
     } catch (error) {
@@ -106,7 +129,7 @@ const userIdade = (perfil) => {
     <div>
       {data ? (
         <div className={classes.mainContainer}>
-          <NavBar />
+          <NavBar user={data} />
           <div className={classes.containerGeral}>
             <div className={classes.firstContainer}>
               <div className={classes.pfpContainer}>

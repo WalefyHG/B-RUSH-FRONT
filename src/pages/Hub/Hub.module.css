@@ -10,7 +10,7 @@
 
 .container{
     display: grid;
-    grid-template-columns: auto 1.5fr auto; /* Uma coluna */
+    grid-template-columns: auto 1.5fr 1.2fr; /* Uma coluna */
     grid-template-rows: auto auto; /* Duas linhas */
     grid-template-areas:
     "create card search"
@@ -110,6 +110,7 @@
     grid-area: search;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 1rem;
     background-color: #141414ee;
     gap: 1rem;
@@ -239,6 +240,7 @@
 .news2{
     display: flex;
     background-color: #141414ee;
+    width: 70%;
     border-radius: 25px;
     flex-direction: column;
     align-items: center;
@@ -250,9 +252,10 @@
 }
 
 .news2 img{
-    width: 8rem;
-    height: 5rem;
+    width: 15rem;
+    height: 10rem;
     margin-top: 1rem;
+    object-fit: cover;
 }
 
 

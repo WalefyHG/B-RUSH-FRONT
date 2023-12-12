@@ -45,7 +45,8 @@ const Perfil = () => {
 
   const openSocialMediaLink = (link) => {
     if (link) {
-      window.open(link, "_blank");
+      const formattedLink = /^https?:\/\//i.test(link) ? link : `http://${link}`;
+      window.open(formattedLink, "_blank");
     }
   };
 
@@ -74,7 +75,7 @@ const Perfil = () => {
 
   return (
     <div className={classes.mainContainer}>
-      <NavBar />
+      <NavBar user={perfilData} />
         <main className={`${classes.main} ${sidebarOpen ? classes.sidebarOpen : ""}`}>
           <section>
             <div className={classes.bannerContainer}>

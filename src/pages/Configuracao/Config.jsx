@@ -98,7 +98,7 @@ const Config = () => {
       <div className={classes.mainContainer}>
        {data ? (
         <>
-        <NavBar/>
+        <NavBar user={data}/>
         <div className={classes.foto}>
           <img src={`http://127.0.0.1:8000/${data.user_image}`} />
         </div>

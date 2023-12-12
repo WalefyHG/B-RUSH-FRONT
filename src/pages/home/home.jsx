@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Swal from "sweetalert2";
 
 const home = () => {
   const {
@@ -14,6 +15,20 @@ const home = () => {
   } = useForm();
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
+
+  const Toast = Swal.mixin({
+    toast: true,
+    background: "#555",
+    color: "#fff",
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
 
   const onSubmit = async (data) => {
     const formsData = {
@@ -27,6 +42,7 @@ const home = () => {
         formsData
       );
 
+
       if (response.status === 200) {
         const token = response.data.token;
         Cookies.set("token", token);
@@ -38,12 +54,30 @@ const home = () => {
           navigate("/perfil");
         }
         reset();
-      } else if (response.status === 400) {
-        alert("Credenciais Invalidas");
       }
+
+
     } catch (error) {
-      console.error("Erro ao enviar formulario: ", error);
-      alert("Error ao enviar formulario");
+      if (error.response.status === 400) {
+        Toast.fire({
+          icon: "error",
+          title: "Email ou senha incorretos",
+        })
+      }
+      if(error.response.status === 404){
+        Toast.fire({
+          icon: "error",
+          title: "Usuario não encontrado",
+        })
+      }
+      
+      if(error.response.status === 500){
+        Toast.fire({
+          icon: "error",
+          title: "Erro interno do servidor",
+        })
+      }
+      
     }
   };
   return (

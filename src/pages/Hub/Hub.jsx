@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import Footer from "../../components/Footer/Footer";
 import NavBar from "../../components/NavBar/NavBar";
-import classes from "./Teste.module.css";
+import classes from "./Hub.module.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { FaRegTrashAlt, FaPencilAlt, FaImage } from "react-icons/fa";
 import CustomDiv from "../../components/CustomDiv/CustomDiv";
 import Swal from "sweetalert2";
 
-const Teste = () => {
+const Hub = () => {
   const [newsList, setNewsList] = useState([]);
   const [newNews, setNewNews] = useState({
     notice_title: "",
@@ -261,7 +261,7 @@ const Teste = () => {
 
   return (
     <div className={classes.mainContainer}>
-      <NavBar />
+    {user && (<NavBar user={user} />)}
       <div className={classes.container}>
         <CustomDiv />
         <div className={classes.card} ref={inputRef}>
@@ -354,4 +354,4 @@ const Teste = () => {
   );
 };
 
-export default Teste;
+export default Hub;

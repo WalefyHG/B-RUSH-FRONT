@@ -15,6 +15,7 @@ import PesquisaResults from "./pages/searchResults/PesquisaResults";
 import PerfilUsuario from "./pages/PerfilUsuario/PerfilUsuario";
 import Notification from "./pages/Notification/Notification";
 import RedeSociais from "./pages/RedesSociais/RedesSociais"; 
+import Hub from "./pages/Hub/Hub";
 
 function App() {
   return (
@@ -77,6 +78,15 @@ function App() {
             element={
               <PrivateRouter>
                 <PerfilUsuario />
+              </PrivateRouter>
+            }
+          />
+
+          <Route
+            path="/hub"
+            element={
+              <PrivateRouter>
+                <Hub />
               </PrivateRouter>
             }
           />

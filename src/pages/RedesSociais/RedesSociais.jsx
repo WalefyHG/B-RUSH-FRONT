@@ -3,6 +3,10 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import classes from './RedesSociais.module.css'
+import NavBar from "../../components/NavBar/NavBar";
+import Loading from "../../components/Loading/Loading";
+
 const RedesSociais = () => {
   const dados = {
     user_instagram: "",
@@ -18,6 +22,7 @@ const RedesSociais = () => {
   } = useForm();
   const [social, setSocial] = useState(dados);
   const navigate = useNavigate();
+  const [data, setData] = useState();
 
   const handleInputChange = (key, value) => {
     setSocial((prevData) => ({
@@ -25,6 +30,25 @@ const RedesSociais = () => {
       [key]: value,
     }));
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = Cookies.get("token");
+      if (token) {
+        try {
+          const response = await axios.get("http://127.0.0.1:8000/api/users/perfil", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setData(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleSave = async () => {
     const token = Cookies.get("token");
@@ -46,10 +70,17 @@ const RedesSociais = () => {
       console.log(error);
     }
   };
+  
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(handleSave)}>
+    <>
+    
+      <div className={classes.mainContainer}>
+      {data && (<NavBar user={data} />)}
+      <div className={classes.imgContainer}>
+        <img src="/Perfil/fallen.jpg" alt="" />
+      </div>
+      <form onSubmit={handleSubmit(handleSave)} className={classes.container}>
         <label>Instagram:</label>
         <input
           type="text"
@@ -81,6 +112,7 @@ const RedesSociais = () => {
         <button type="submit">Salvar</button>
       </form>
     </div>
+    </>
   );
 };
 

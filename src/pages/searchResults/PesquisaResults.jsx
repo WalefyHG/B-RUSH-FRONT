@@ -10,7 +10,7 @@ const PesquisaResults = () => {
   const { user_firstName } = useParams();
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [user, setUser] = useState();
   useEffect(() => {
     const fetchData = async () => {
         const token = Cookies.get("token");
@@ -35,11 +35,30 @@ const PesquisaResults = () => {
     fetchData();
   }, [user_firstName]);
 
-  
+  useEffect(()=>{
+    const fetchUser = async () => {
+      const token = Cookies.get("token");
+      if(token){
+        try {
+          const response = await axios.get(
+            `http://127.0.0.1:8000/api/users/perfil`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            setUser(response.data);
+      }catch(error){
+        console.error('Erro ao buscar o usuario:', error);
+      }
+    }
+  }
+  fetchUser()
+  }, [])
 
   return (
     <div className={classes.mainContainer}>
-      <NavBar/>
+      {user && (<NavBar user={user} />)}
       <div className={classes.container}>
       <h1>Resultados da Pesquisa para: {user_firstName}</h1>
       {loading && <p className={classes.carregando}>Carregando...</p>}
@@ -51,7 +70,11 @@ const PesquisaResults = () => {
               <div className={classes.imageDiv}>
                 <img src={`http://127.0.0.1:8000${result.user_image}`} alt="Imagem do Usuario" />
               </div>
-            {result.user_firstName} - {result.user_email}
+            <div className={classes.textControl}>
+            <label>Usuario: {result.user_firstName}</label>
+            - 
+            <label>Email: {result.user_email}</label>
+            </div>
             </a> 
             </li>
             

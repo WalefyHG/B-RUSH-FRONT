@@ -1,0 +1,47 @@
+.firstContainer{
+    background-color: #1A1A1A;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 420px;
+    border-radius: 20px;
+    padding: 1rem;
+    color:white;
+
+}
+
+.pfpContainer{
+    align-self: center;
+    background-size: contain;
+    
+    
+}
+.pfp{
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+#nome{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #2a033f;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 20px;
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+}
+
+
+#emailesenha{
+    padding:20px
+
+}
+#emailesenha .data{
+    margin-top: 20px;
+}
