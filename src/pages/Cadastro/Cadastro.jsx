@@ -13,7 +13,8 @@ import Steps from "../../formSteps/Steps";
 import { useForm } from "react-hook-form";
 import { useForm as FormsData} from "../../hooks/useForm";
 import axios from "axios";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 const formsTemplate = {
@@ -34,6 +35,20 @@ const Cadastro = () => {
   const [data, setData] = useState(formsTemplate);
   const [response, setResponse] = useState(null);
   const navigate = useNavigate();
+
+  const Toast = Swal.mixin({
+    toast: true,
+    background: "#555",
+    color: "#fff",
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  })
 
   const updateFieldHandler = (key, value) => {
     setData((prevData) => ({
@@ -76,13 +91,21 @@ const Cadastro = () => {
         }
       })
       if(response.status === 200){
-        navigate('/perfil');
+        Toast.fire({
+          icon: 'success',
+          title: 'Cadastro realizado com sucesso!'
+        })
+        setTimeout(() => {
+          navigate('/')
+        }, 3000)
         reset();
       }
       }
     catch(error){
-        console.error("Erro ao enviar formulario: ", error);
-        console.log(response)
+        Toast.fire({
+          icon: 'error',
+          title: 'Erro ao cadastrar!'
+        })
       }
   }
 

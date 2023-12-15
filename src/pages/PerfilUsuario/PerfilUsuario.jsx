@@ -44,9 +44,8 @@ const Perfil = () => {
     fetchData();
   }, []);
 
-
   useEffect(() => {
-    const fetchUser = async () =>{
+    const fetchUser = async () => {
       const token = Cookies.get("token");
       if (token) {
         try {
@@ -56,18 +55,17 @@ const Perfil = () => {
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            })
-            setUsuarioLogado(response.data)
-    }catch(error){
-      console.log(error)
-    }
-  }
+            }
+          );
+          setUsuarioLogado(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
 
-}
-
-fetchUser();
-}, [])
-
+    fetchUser();
+  }, []);
 
   const formatData = (perfil) => {
     const data = perfil;
@@ -105,10 +103,21 @@ fetchUser();
                 alt="Icone de Perfil"
               />
               <a href="#" className={classes.iconCsgo}>
-                <img
-                  src="/4737387_counter strike_cs_csgo_games_gaming_icon.svg"
-                  alt="Counter-Strike icon"
-                />
+                {perfilData.user_games === "CS:GO" && (
+                  <img
+                    src="/4737387_counter strike_cs_csgo_games_gaming_icon.svg"
+                    alt="Counter-Strike icon"
+                  />
+                )}
+                {perfilData.user_games === "Valorant" && (
+                  <img src="/download.jpg" alt="Valorant icon" />
+                )}
+                {perfilData.user_games === "League of Legends" && (
+                  <img
+                    src="/lol-league-of-Legends-logo-5.png"
+                    alt="League Of Legends icon"
+                  />
+                )}
               </a>
               <div className={classes.card}>
                 <h1>{perfilData.user_name}</h1>

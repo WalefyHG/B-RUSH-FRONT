@@ -126,18 +126,20 @@
     border-radius: 50%;
 }
 
+
+
 #nome{
     display: flex;
     align-self: center;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-direction: row;
     margin-top: 20px;
     background-color: #2a033f;
-    width: 8rem;
-    height: 2rem;
+    width: 60%;
     border-radius: 20px;
-    padding: 1.5rem 3rem;
-    font-size: 1.2rem;
+    padding: 1rem 0;
+    font-size: 20px;
 }
 
 
@@ -291,6 +293,11 @@
 .botoes .resetar{
     background-color: #041d77;
 }
+
+.swal2-title {
+    font-size: 1.6rem !important;
+    font-family: "Montserrat";
+  }
 
 .botoes button{
     cursor: pointer;

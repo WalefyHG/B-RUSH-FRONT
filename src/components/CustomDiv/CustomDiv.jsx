@@ -49,7 +49,7 @@ const CustomDiv = () => {
         />
       </div>
       <div id={classes.nome}>
-        <p>{data.user_name}</p>
+        <h2>{data.user_name}</h2>
       </div>
       <form id={classes.emailesenha}>
         <p className={classes.email}>Email:</p>

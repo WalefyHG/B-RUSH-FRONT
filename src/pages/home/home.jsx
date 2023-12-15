@@ -51,7 +51,7 @@ const home = () => {
           navigate("/notification");
         } else {
           setLoggedIn(true);
-          navigate("/perfil");
+          navigate("/hub");
         }
         reset();
       }

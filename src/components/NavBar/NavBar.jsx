@@ -53,7 +53,6 @@ const NavBar = ({ user }) => {
                 </a>
                 {isModalOpen && (
                   <div className={classes.modal}>
-                    {/* Adicione o conteúdo do seu modal aqui */}
                     <div className={classes.conteudo}>
                       <button onClick={() => navigate('/perfil')}><IoPersonCircle/> Perfil</button>
                       <button onClick={() => navigate('/hub')}><FaRegNewspaper/> Hub</button>

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import classes from './RedesSociais.module.css'
 import NavBar from "../../components/NavBar/NavBar";
 import Loading from "../../components/Loading/Loading";
+import Swal from "sweetalert2";
 
 const RedesSociais = () => {
   const dados = {
@@ -23,6 +24,22 @@ const RedesSociais = () => {
   const [social, setSocial] = useState(dados);
   const navigate = useNavigate();
   const [data, setData] = useState();
+  const Toast = Swal.mixin({
+    background: "#555",
+    color: "#fff",
+    width: 300,
+    toast: true,
+    font: "Montserrat",
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  })
+
 
   const handleInputChange = (key, value) => {
     setSocial((prevData) => ({
@@ -62,15 +79,25 @@ const RedesSociais = () => {
           },
         }
       );
+      Toast.fire({
+        icon: "success",
+        title: "Dados atualizados com sucesso!",
+      });
       setTimeout(() => {
         navigate("/perfil");
       }, 3000);
       console.log(response.data);
     } catch (error) {
-      console.log(error);
+      Toast.fire({
+        icon: "success",
+        title: "Dados atualizados com sucesso!",
+      });
     }
   };
   
+  if(!data){
+    return <Loading />
+  }
 
   return (
     <>
@@ -78,7 +105,7 @@ const RedesSociais = () => {
       <div className={classes.mainContainer}>
       {data && (<NavBar user={data} />)}
       <div className={classes.imgContainer}>
-        <img src="/Perfil/fallen.jpg" alt="" />
+        <img src={`http://127.0.0.1:8000/${data.user_image}`} alt="" />
       </div>
       <form onSubmit={handleSubmit(handleSave)} className={classes.container}>
         <label>Instagram:</label>

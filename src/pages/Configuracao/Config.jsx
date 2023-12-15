@@ -112,10 +112,6 @@ const Config = () => {
           <button onClick={() => navigate('/redes_sociais') } class="privacidade">
             <IoShareSocial  /> Social Media <FaChevronRight />
           </button>
-          <button class="central">
-            <FaQuestionCircle />
-            Central de Ajuda <FaChevronRight />
-          </button>
           <button onClick={handleDelete} class="deletar">
             <FaHeartBroken /> Deletar Conta <FaChevronRight />
           </button>

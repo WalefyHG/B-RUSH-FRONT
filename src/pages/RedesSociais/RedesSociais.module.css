@@ -32,7 +32,7 @@
     align-self: center;
     margin-top: 9.5rem;
     align-items: center;
-    background-color: #444;
+    background-color: #222;
     border-radius: 15px;
     gap: 1rem;
     color: white;
@@ -42,12 +42,12 @@
 .container input{
     width: 100%;
     padding: 0.5rem;
-    border-radius: 5px;
     border: none;
-    background-color: #333;
+    background-color: transparent;
     color: white;
     outline: none;
     border: none;
+    border-bottom: 1px solid white;
 }
 
 .container button{

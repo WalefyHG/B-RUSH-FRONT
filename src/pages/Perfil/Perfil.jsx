@@ -96,10 +96,18 @@ const Perfil = () => {
                   alt="Icone de Perfil"
                 />
                 <a href="#" className={classes.iconCsgo}>
-                  <img
+                  {perfilData.user_games === "CS:GO" && (<img
                     src="/4737387_counter strike_cs_csgo_games_gaming_icon.svg"
                     alt="Counter-Strike icon"
-                  />
+                  />)}
+                  {perfilData.user_games === "Valorant" && (<img
+                    src="/download.jpg"
+                    alt="Valorant icon"
+                  />)}
+                  {perfilData.user_games === "League of Legends" && (<img
+                    src="/lol-league-of-Legends-logo-5.png"
+                    alt="League Of Legends icon"
+                  />)}
                 </a>
                 <div className={classes.card}>
                   <h1>{perfilData.user_name}</h1>

@@ -1,261 +1,339 @@
-.mainContainer{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: "Montserrat";
-    color: #f8f7f7;
-    background: black;
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Montserrat";
+  color: #f8f7f7;
+  background: black;
+  position: relative;
+  transition: filter 0.3s ease;
 }
 
-
-.container{
-    display: grid;
-    grid-template-columns: auto 1.5fr 1.2fr; /* Uma coluna */
-    grid-template-rows: auto auto; /* Duas linhas */
-    grid-template-areas:
-    "create card search"
-    "card2 card2 card2";
-    gap: 1rem;
-    width: 100%;
-    margin-top: 0.8rem;
-    padding: 0.8rem;
+.container {
+  display: grid;
+  grid-template-columns: auto 1.5fr 1fr; /* Uma coluna */
+  grid-template-rows: auto auto; /* Duas linhas */
+  grid-template-areas: "create card search";
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.8rem;
+  padding: 0.8rem;
 }
 
-
-.card{
-    grid-area: card;
-    background-color: #141414ee;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    align-items: center;
-    /* padding: 1rem; */
-    border-radius: 25px;
+hr {
+  width: 100%;
+  border: 1px solid #fff;
 }
 
-.card input{
-    height: 30px;
-    width: 400px;
-    border-radius: 20px;
-    padding: 1rem;
-    border: none;
-    outline: none;
+.controlCreate {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
 }
-
-.card textarea{
-    height: 150px;
-    width: 400px;
-    border-radius: 20px;
-    padding: 10px 1rem;
-    border: none;
-    outline: none;
-    resize: none;
-    overflow: hidden;
-    
-}
-
-
-.card button{
-    height: 30px;
-    width: 150px;
-    border: none;
-    outline: none;
-    color: #FFF;
-    border-radius: 20px;
-    background-color: #530477;
-    cursor: pointer;
-    transform: 0.5s;
-}
-
-.card button:hover{
-    background-color: #3b0455;
-    opacity: 0.8;
-}
-
-.container hr{
-    width: 90%;
-    border: 1px solid #FFF;
-}
-
-.controlCreate{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 90%;
-    gap: 1rem;
-    padding: 1rem;
-    
-}
-
 
 .fileUpload {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    gap: 0.5rem;
-    border-radius: 5px;
-  }
-  
-  .fileUpload input {
-    display: none; /* Oculta o campo de input */
-  }
-
-
-.search{
-    grid-area: search;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    background-color: #141414ee;
-    gap: 1rem;
-    border-radius: 25px;
-    overflow-y: auto; /* Adiciona uma barra de rolagem vertical conforme necessário */
-    max-height: 420px;
+  cursor: pointer;
+  display: flex;
+  font-family: "Montserrat";
+  align-items: center;
+  border: 1px solid #ccc;
+  outline: none;
+  color: #fff;
+  padding: 5px;
+  gap: 0.5rem;
+  border-radius: 5px;
 }
 
-.search input{
-    height: 30px;
-    width: 200px;
-    border-radius: 20px;
-    padding: 1rem;
-    border: none;
-    outline: none;
+.fileUpload input {
+  display: none; /* Oculta o campo de input */
 }
 
-.search button{
-    height: 30px;
-    width: 90px;
-    border: none;
-    outline: none;
-    color: #FFF;
-    border-radius: 20px;
-    background-color: #530477;
-    cursor: pointer;
-    transform: 0.5s;
+.search {
+  grid-area: search;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: #141414ee;
+  gap: 1rem;
+  border-radius: 25px;
+  overflow-y: auto; /* Adiciona uma barra de rolagem vertical conforme necessário */
+  max-height: 420px;
 }
 
-.search button:hover{
-    background-color: #3b0455;
-    opacity: 0.8;
+.search input {
+  height: 30px;
+  width: 200px;
+  border-radius: 20px;
+  padding: 1rem;
+  border: none;
+  outline: none;
+}
+
+.search button {
+  height: 30px;
+  width: 90px;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 20px;
+  background-color: #530477;
+  cursor: pointer;
+  transform: 0.5s;
+}
+
+.search button:hover {
+  background-color: #3b0455;
+  opacity: 0.8;
 }
 
 .search::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
-   
-.controlSearch{
+
+.controlSearch {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  padding: 16px;
+}
+
+.card2 {
+  grid-area: card;
+  width: 100%;
+  display: flex;
+  justify-self: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+#btnCreate{
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
     display: flex;
     justify-content: center;
-    width: 100%;
-    gap: 1rem;
-    padding: 16px;
-}
-
-
-
-.card2{
-    grid-area: card2;
-    width: 100%;
-    display: flex;
-    align-self: center;
-    justify-self: flex-start;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    gap: 0.8rem;
-
+    border: 0;
+    outline: 0;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 20px;
+    width: 13%;
+    background-color: rgba(8, 112, 8, 0.689);
+    border-radius: 5px;
+    padding: 0.3rem;
+    cursor: pointer;
+    animation-duration: '0.5s'
 }
 
-.edit{
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
-    gap: 1rem;
-    width: 100%;
+#btnCreate:hover{
+    background-color: rgba(8, 112, 8, 0.8);
 }
 
-.card2 svg{
+.modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  background-color: #141414ee;
+  opacity: 0;
+  transition: opacity 0.3s;
+  gap: 1rem;
+  border-radius: 25px;
+}
+
+.modal svg {
+  cursor: pointer;
+  color: white;
+}
+
+.modal input {
+  height: 30px;
+  width: 400px;
+  border-radius: 20px;
+  padding: 1rem;
+  border: none;
+  outline: none;
+}
+
+.modal textarea {
+  height: 90px;
+  width: 400px;
+  border-radius: 20px;
+  padding: 10px 1rem;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+}
+
+.texto{
+    font-size: 1.3rem;
+    font-family: 'montserrat';
+    color: white;
+}
+
+.modal button {
+  height: 30px;
+  width: 150px;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 20px;
+  background-color: #530477;
+  cursor: pointer;
+  transform: 0.5s;
+  margin-bottom: 1rem;
+}
+
+.modal button:hover {
+  background-color: #3b0455;
+  opacity: 0.8;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.blur {
+  filter: blur(5px);
+  backdrop-filter: blur(0);
+  pointer-events: none;
+}
+
+#closeModal{
     display: flex;
     align-self: flex-end;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: red;
-    cursor: pointer;
+    justify-content: flex-start;
+    color: rgb(160, 14, 14);
+    font-size: 1.7rem;
 }
 
-#editando{
-    color: rgb(11, 11, 205);
+#closeModal:hover{
+    color: rgb(255, 0, 0);
 }
 
-#editando:hover{
-    color: rgb(5, 5, 86);
+.edit {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  gap: 1rem;
+  width: 100%;
 }
 
-.card2 svg:hover{
-    color: rgb(134, 25, 25);
+.imageControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
 }
 
-.news{
-    display: flex;
-    background-color: #141414ee;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    width: 80%;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-radius: 25px;
+.card2 svg {
+  display: flex;
+  align-self: flex-end;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: red;
+  cursor: pointer;
 }
 
-.news p{
-    text-align: justify;
-    word-break: break-all;
-    white-space: pre-line;
-    padding: 0.8rem;
+#editando {
+  color: rgb(11, 11, 205);
 }
 
-.news img{
-    width: 22rem;
-    height: 15rem;
-    margin-top: 1rem;
-    object-fit: cover;
+#editando:hover {
+  color: rgb(5, 5, 86);
+}
+
+.card2 svg:hover {
+  color: rgb(134, 25, 25);
+}
+
+.news {
+  display: flex;
+  background-color: #141414ee;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 80%;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 25px;
+}
+
+.news p {
+  text-align: justify;
+  word-break: break-all;
+  white-space: pre-line;
+  padding: 0.8rem;
+}
+
+.news img {
+  width: 22rem;
+  height: 15rem;
+  margin-top: 1rem;
+  object-fit: cover;
 }
 
 .newsGroup {
-    display: flex;
-    padding: 2rem;
-    padding-left: 5rem;
-    gap: 2rem;
-    justify-content: flex-start;
-    width: 100%;
-    
+  display: flex;
+  padding: 2rem;
+  padding-left: 5rem;
+  gap: 2rem;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.hidden{
+    display: none;
+}
+
+.news2 {
+  display: flex;
+  background-color: #141414ee;
+  width: 80%;
+  border-radius: 25px;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  text-align: justify;
+  word-break: break-all;
+}
+
+.news2 img {
+  width: 15rem;
+  height: 10rem;
+  margin-top: 1rem;
+  object-fit: cover;
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-
-.news2{
-    display: flex;
-    background-color: #141414ee;
-    width: 70%;
-    border-radius: 25px;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    text-align: justify;
-    word-break: break-all;
-}
-
-.news2 img{
-    width: 15rem;
-    height: 10rem;
-    margin-top: 1rem;
-    object-fit: cover;
-}
-
-

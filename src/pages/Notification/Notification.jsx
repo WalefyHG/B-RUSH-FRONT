@@ -81,7 +81,14 @@ const Notification = () => {
         });
 
         if(response.data.mensagem === "Código verificado com sucesso"){
-          Navigate('/perfil');
+          Toast.fire({
+            icon: "success",
+            title: "Código verificado com sucesso!",
+          })
+          setTimeout(() => {
+            Navigate('/hub');
+          }, 3000)
+
         }else{
           Toast.fire({
             icon: "error",
@@ -89,7 +96,10 @@ const Notification = () => {
           });
         }
   }catch(error){
-    console.error("Erro ao enviar formulario: ", error);
+    Toast.fire({
+      icon: "error",
+      title: "Erro ao enviar o codigo",
+    })
   }finally{
     setIsLoading(false);
   }

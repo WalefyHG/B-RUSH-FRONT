@@ -21,6 +21,7 @@ const Info = () => {
     color: "#fff",
     width: 300,
     toast: true,
+    font: "Montserrat",
     position: "top-end",
     showConfirmButton: false,
     timer: 3000,
@@ -135,9 +136,7 @@ const userIdade = (perfil) => {
               <div className={classes.pfpContainer}>
                 <img className={classes.pfp} src={`http://127.0.0.1:8000${data.user_image}`} />
               </div>
-              <div id={classes.nome}>
-                <p>{data.user_name}</p>
-              </div>
+                <h2 id={classes.nome}>{data.user_name} </h2>
               <form id={classes.emailesenha}>
                 <p className={classes.email}>Email:</p>
                 <p>{data.user_email}</p>
