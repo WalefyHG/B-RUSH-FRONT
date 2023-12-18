@@ -23,6 +23,7 @@ const formsTemplate = {
   user_birthday: "",
   user_email: "",
   user_password: "",
+  confirm_password: "",
   user_firstName: "",
   user_idioma: "Português",
   user_games: "CS:GO",
@@ -84,12 +85,32 @@ const Cadastro = () => {
     delete data.image
     formData.append('user', JSON.stringify(data));
     formData.append("image", dataImagem);
+
+    if(data.user_password.length < 8){
+      Toast.fire({
+        icon: 'error',
+        title: 'A senha deve ter no mínimo 8 caracteres!'
+      })
+      return;
+    }
+
+    if(data.user_password !== data.confirm_password){
+      Toast.fire({
+        icon: 'error',
+        title: 'As senhas não conferem!'
+      })
+      return;
+    }
+
+
     try{
       const response = await axios.post('http://127.0.0.1:8000/api/users/criando', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
+
+      
       if(response.status === 200){
         Toast.fire({
           icon: 'success',
@@ -102,10 +123,18 @@ const Cadastro = () => {
       }
       }
     catch(error){
-        Toast.fire({
-          icon: 'error',
-          title: 'Erro ao cadastrar!'
-        })
+        if(error.response.data.detail === "Email já cadastrado"){
+          Toast.fire({
+            icon: 'error',
+            title: 'Email já cadastrado!'
+          })
+        }
+        else{
+          Toast.fire({
+            icon: 'error',
+            title: 'Nome de usuário já cadastrado!'
+          })
+        }
       }
   }
 

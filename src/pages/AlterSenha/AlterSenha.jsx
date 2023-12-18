@@ -70,6 +70,30 @@ const AlterSenha = () => {
   const onSubmit = async () => {
     const token = Cookies.get("token");
 
+    if(change_password.senha_nova !== change_password.confirmar_senha){
+      Toast.fire({
+        icon: "error",
+        title: "Senhas não conferem!",
+      })
+      return;
+    }
+
+    if(change_password.senha_nova.length < 8){
+      Toast.fire({
+        icon: "error",
+        title: "A senha deve ter no mínimo 8 caracteres!",
+      })
+      return;
+    }
+
+    if(change_password.senha_atual === change_password.senha_nova){
+      Toast.fire({
+        icon: "error",
+        title: "A nova senha deve ser diferente da atual!",
+      })
+      return;
+    }
+
     try {
       const response = await axios.put(
         "http://127.0.0.1:8000/api/users/atualizar_senha",

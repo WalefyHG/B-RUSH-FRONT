@@ -16,7 +16,7 @@ const Password = ({ data, updateFieldHandler }) => {
         placeholder="Digite sua senha"
       />
       <label htmlFor="">Confirme sua Senha</label>
-      <input type="password" name="confirm_password" placeholder="Confirme sua senha"  />
+      <input type="password" name="confirm_password" placeholder="Confirme sua senha" onChange={(e) => updateFieldHandler("confirm_password", e.target.value)} />
     </div>
   );
 };
