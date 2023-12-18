@@ -110,8 +110,6 @@ const Hub = () => {
 
     // Recupera a referência para o elemento da notícia
     const selectedNewsRef = card2NewsRefs.current[id]
-    console.log(selectedNewsRef)
-
 
     // Rola até a notícia selecionada
     if (selectedNewsRef) {
@@ -162,6 +160,7 @@ const Hub = () => {
           });
 
           setSearch("");
+          setImage(null);
           setIsModalOpen(false);
         } else {
           console.error("Erro ao criar noticia: ", response.statusText);
