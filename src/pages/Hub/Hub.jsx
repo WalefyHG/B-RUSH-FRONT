@@ -4,10 +4,16 @@ import NavBar from "../../components/NavBar/NavBar";
 import classes from "./Hub.module.css";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { FaRegTrashAlt, FaPencilAlt, FaImage, FaCheck } from "react-icons/fa";
+import {
+  FaRegTrashAlt,
+  FaPencilAlt,
+  FaFileImage,
+  FaCheck,
+} from "react-icons/fa";
 import { VscError } from "react-icons/vsc";
 import CustomDiv from "../../components/CustomDiv/CustomDiv";
 import Swal from "sweetalert2";
+import { FcAddImage } from "react-icons/fc";
 
 const Hub = () => {
   const [newsList, setNewsList] = useState([]);
@@ -23,6 +29,8 @@ const Hub = () => {
   const inputRef = useRef(null);
   const [user, setUser] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedNewsId, setSelectedNewsId] = useState(null);
+  const card2NewsRefs = useRef([]);
 
   const Toast = Swal.mixin({
     toast: true,
@@ -30,6 +38,7 @@ const Hub = () => {
     color: "#fff",
     position: "top-end",
     showConfirmButton: false,
+    showCloseButton: true,
     timer: 3000,
     timerProgressBar: true,
     didOpen: (toast) => {
@@ -96,6 +105,29 @@ const Hub = () => {
     });
   };
 
+  const handleSelectNews = (id) => {
+    setSelectedNewsId(id);
+
+    // Recupera a referência para o elemento da notícia
+    const selectedNewsRef = card2NewsRefs.current[id]
+    console.log(selectedNewsRef)
+
+
+    // Rola até a notícia selecionada
+    if (selectedNewsRef) {
+      const offsetTop = selectedNewsRef.offsetTop;
+      const offsetTopSmooth = offsetTop - 50;
+      selectedNewsRef.scrollIntoView({
+        top: offsetTopSmooth,
+        behavior: "smooth",
+      });
+    }
+    setTimeout(() => {
+      setSelectedNewsId(null);
+    }, 4000);
+    
+  };
+
   const handleCreateNews = async () => {
     const token = Cookies.get("token");
     if (token) {
@@ -124,9 +156,12 @@ const Hub = () => {
             notice_date: getCurrentDate(),
           });
 
+          Toast.fire({
+            icon: "success",
+            text: "Noticia criada com sucesso",
+          });
 
           setSearch("");
-          setImage(null);
           setIsModalOpen(false);
         } else {
           console.error("Erro ao criar noticia: ", response.statusText);
@@ -183,9 +218,8 @@ const Hub = () => {
       try {
         const formData = new FormData();
         formData.append("notice", JSON.stringify(newNews));
-        if (image !== null) {
-          formData.append("image", image);
-        }
+
+        formData.append("image", image);
 
         const response = await axios.put(
           `http://127.0.0.1:8000/api/notices/update/${editingId}`,
@@ -209,6 +243,7 @@ const Hub = () => {
             notice_date: getCurrentDate(),
           });
           setEditingId(null);
+          setImage(null);
           setIsModalOpen(false);
         }
         if (response.status === 401) {
@@ -233,6 +268,7 @@ const Hub = () => {
       notice_content: news.notice_content,
       notice_date: getCurrentDate(),
     });
+    setImage(news.notice_image);
 
     if (inputRef.current) {
       inputRef.current.scrollIntoView({
@@ -278,114 +314,145 @@ const Hub = () => {
 
   return (
     <>
-    <div className={`${classes.mainContainer} ${isModalOpen ? classes.blur : ''}`}>
-      {user && <NavBar user={user} />}
-      <div className={classes.container}>
-        <CustomDiv />
-        <div className={classes.card2}>
-          {newsList.map((news) => (
-            <div className={classes.news} key={news.notice_id}>
-              <h2>{news.notice_title}</h2>
-              <p>{news.notice_content}</p>
-              <p>Data de Criação: {formatData(news.notice_date)}</p>
-              <h2>Autor: {news.notice_writer.user_name}</h2>
-              {news.notice_image ? (
-                <img src={`http://127.0.0.1:8000${news.notice_image}`} />
-              ) : (
-                <img style={{ display: "none" }} />
-              )}
+      <div
+        className={`${classes.mainContainer} ${
+          isModalOpen ? classes.blur : ""
+        }`}
+      >
+        {user && <NavBar user={user} />}
+        <div className={classes.container}>
+          <CustomDiv />
+          <div className={classes.card2}>
+            {newsList.map((news) => (
+              <div
+                className={`${classes.news} ${
+                  selectedNewsId === news.notice_id ? classes.selectedNews : ""
+                }`}
+                key={news.notice_id}
+                id={news.notice_id}
+                ref={(ref) => (card2NewsRefs.current[news.notice_id] = ref)}
+              >
+                <h2>{news.notice_title}</h2>
+                <p>{news.notice_content}</p>
+                <p>Data de Criação: {formatData(news.notice_date)}</p>
+                <h2>Autor: {news.notice_writer.user_name}</h2>
+                {news.notice_image ? (
+                  <img src={`http://127.0.0.1:8000${news.notice_image}`} />
+                ) : (
+                  <img style={{ display: "none" }} />
+                )}
 
-              {user && user.user_id === news.notice_writer.user_id && (
-                <div className={classes.edit}>
-                  <FaRegTrashAlt
-                    onClick={() => handleDeleteNews(news.notice_id)}
-                  />
-                  <FaPencilAlt
-                    id={classes.editando}
-                    onClick={() => startNewsEditing(news)}
-                  />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-        <div className={classes.search}>
-          <div className={classes.controlSearch}>
-            <input
-              type="text"
-              placeholder="Pesquisar"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            <button onClick={handleSearch}>Pesquisar</button>
-            
-              <span onClick={handleClearSearch} className={`${classes.clearIcon} ${search || searchResults.length > 0 ? '' : classes.hidden}`}>
+                {user && user.user_id === news.notice_writer.user_id && (
+                  <div className={classes.edit}>
+                    <FaRegTrashAlt
+                      onClick={() => handleDeleteNews(news.notice_id)}
+                    />
+                    <FaPencilAlt
+                      id={classes.editando}
+                      onClick={() => startNewsEditing(news)}
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className={classes.search}>
+            <div className={classes.controlSearch}>
+              <input
+                type="text"
+                placeholder="Pesquisar"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <button onClick={handleSearch}>Pesquisar</button>
+
+              <span
+                onClick={handleClearSearch}
+                className={`${classes.clearIcon} ${
+                  search || searchResults.length > 0 ? "" : classes.hidden
+                }`}
+              >
                 &#x2715;
               </span>
-
-          </div>
-          {searchResults.map((news) => (
-            <div className={classes.news2} key={news.id}>
-              <h1>{news.notice_title}</h1>
-              <p>{news.notice_content}</p>
-              <p>Data de Criação: {formatData(news.notice_date)}</p>
-              <h2>Autor: {news.notice_writer.user_name}</h2>
-              {news.notice_image ? (
-                <img src={`http://127.0.0.1:8000${news.notice_image}`} />
-              ) : (
-                <img style={{ display: "none" }} />
-              )}
             </div>
-          ))}
-        </div>
-      </div>
-      {(!isModalOpen) && <button onClick={handleModal} id={classes.btnCreate} className={isModalOpen ? '' : classes.fadeIn}>+ Criar Noticia</button>}
-      <Footer />
-    </div>
-    {isModalOpen && (
-        <div className={`${classes.modal} ${isModalOpen ? classes.show : ''}`}>
-          <VscError onClick={handleModal} id={classes.closeModal} />
-            <div className={classes.controlCreate}>
-              <label htmlFor="notice_title" className={classes.texto}>Titulo: </label>
-              <input
-                id="notice_title"
-                type="text"
-                placeholder="Titulo"
-                name="notice_title"
-                value={newNews.notice_title}
-                onChange={handleInputChange}
-              />
-              <label htmlFor="notice_content" className={classes.texto}>Conteudo: </label>
-              <textarea
-                id="notice_content"
-                name="notice_content"
-                placeholder="Conteudo"
-                value={newNews.notice_content}
-                onChange={handleInputChange}
-              />
-              <hr />
-              <div className={classes.imageControl}>
-                <label htmlFor="inputImage" className={classes.fileUpload}>
-                  <FaImage />
-                  Envie seu Arquivo
-                  <input
-                    type="file"
-                    accept="img/*"
-                    id="inputImage"
-                    name="image"
-                    onChange={handleImage}
-                  />
-                  {image ? <FaCheck /> : <VscError />}
-                </label>
-                {image && <FaRegTrashAlt onClick={() => setImage(null)} />}
+            {searchResults.map((news) => (
+              <div
+                className={classes.news2}
+                key={news.notice_id}
+                onClick={() => handleSelectNews(news.notice_id)}
+                id={news.notice_id}
+              >
+                <h1>{news.notice_title}</h1>
+                <p>{news.notice_content}</p>
+                <p>Data de Criação: {formatData(news.notice_date)}</p>
+                <h2>Autor: {news.notice_writer.user_name}</h2>
+                {news.notice_image ? (
+                  <img src={`http://127.0.0.1:8000${news.notice_image}`} />
+                ) : (
+                  <img style={{ display: "none" }} />
+                )}
               </div>
+            ))}
+          </div>
+        </div>
+        {!isModalOpen && (
+          <button
+            onClick={handleModal}
+            id={classes.btnCreate}
+            className={isModalOpen ? "" : classes.fadeIn}
+          >
+            + Criar Noticia
+          </button>
+        )}
+        <Footer />
+      </div>
+      {isModalOpen && (
+        <div className={`${classes.modal} ${isModalOpen ? classes.show : ""}`}>
+          <VscError onClick={handleModal} id={classes.closeModal} />
+          <div className={classes.controlCreate}>
+            <label htmlFor="notice_title" className={classes.texto}>
+              Titulo:{" "}
+            </label>
+            <input
+              id="notice_title"
+              type="text"
+              placeholder="Titulo"
+              name="notice_title"
+              value={newNews.notice_title}
+              onChange={handleInputChange}
+            />
+            <label htmlFor="notice_content" className={classes.texto}>
+              Conteudo:{" "}
+            </label>
+            <textarea
+              id="notice_content"
+              name="notice_content"
+              placeholder="Conteudo"
+              value={newNews.notice_content}
+              onChange={handleInputChange}
+            />
+            <hr />
+            <div className={classes.imageControl}>
+              <label htmlFor="inputImage" className={classes.fileUpload}>
+                <FcAddImage />
+                Envie seu Arquivo
+                <input
+                  type="file"
+                  accept="img/*"
+                  id="inputImage"
+                  name="image"
+                  onChange={handleImage}
+                />
+                {image ? <FaCheck /> : <VscError />}
+              </label>
+              {image && <FaRegTrashAlt onClick={() => setImage(null)} />}
             </div>
-            {editingId ? (
-              <button onClick={handleUpdateNews}>Atualizando Noticia</button>
-            ) : (
-              <button onClick={handleCreateNews}>Criando Noticia</button>
-            )}
-            
+          </div>
+          {editingId ? (
+            <button onClick={handleUpdateNews}>Atualizando Noticia</button>
+          ) : (
+            <button onClick={handleCreateNews}>Criando Noticia</button>
+          )}
         </div>
       )}
     </>

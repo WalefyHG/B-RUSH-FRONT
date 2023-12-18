@@ -202,7 +202,10 @@
     align-items: center;
     list-style: none;
     gap: 20px;
-    
+}
+
+.socialMedias li{
+    cursor: pointer;
 }
 
 /* SideBar */

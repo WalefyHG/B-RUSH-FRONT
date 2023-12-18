@@ -265,6 +265,24 @@ hr {
   color: rgb(134, 25, 25);
 }
 
+.selectedNews {
+  margin-top: 20px;
+  animation: highlight 4s ease-in-out; /* Adiciona uma transição suave */
+}
+
+@keyframes highlight {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 255, 253, 0.529); /* Cor de destaque inicial */
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0); /* Transição para sem sombra */
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.455); /* Cor de destaque final */
+  }
+}
+
+
 .news {
   display: flex;
   background-color: #141414ee;
@@ -316,6 +334,7 @@ hr {
   padding: 1rem;
   text-align: justify;
   word-break: break-all;
+  cursor: pointer;
 }
 
 .news2 img {
@@ -325,6 +344,10 @@ hr {
   object-fit: cover;
 }
 
+.news2:hover{
+    background-color: #1b1b1b;
+
+}
 
 
 @keyframes fadeIn {

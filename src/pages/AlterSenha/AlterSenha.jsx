@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AlterSenha = () => {
 
@@ -25,6 +26,21 @@ const AlterSenha = () => {
       [key]: value,
     }));
   };
+
+  const Toast = Swal.mixin({
+    toast: true,
+    background: "#555",
+    color: "#fff",
+    position: "top-end",
+    showConfirmButton: false,
+    showCloseButton: true,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  })
 
   const handleEnd = () => {
     navigate("/perfil");
@@ -66,8 +82,14 @@ const AlterSenha = () => {
        
       );
       if(response.status === 200){
-        Cookies.remove("token");
-        navigate("/");
+        Toast.fire({
+          icon: "success",
+          title: "Senha alterada com sucesso!",
+        })
+        setTimeout(() => {
+          Cookies.remove("token");
+          navigate("/");
+        }, 3000);
       }
       
     } catch (error) {

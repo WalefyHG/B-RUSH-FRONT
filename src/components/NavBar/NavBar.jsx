@@ -1,15 +1,15 @@
 import classes from "./NavBar.module.css";
 import Cookies from "js-cookie";
-import { useNavigate, useParams  } from 'react-router-dom';
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import { FaDoorOpen, FaRegNewspaper } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 
 const NavBar = ({ user }) => {
-  const [user_firstName, setUserFirstName] = useState('');
+  const [user_firstName, setUserFirstName] = useState("");
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const modalRef = useRef();
 
   const handleLogout = () => {
     // Limpe os cookies e tokens
@@ -21,28 +21,60 @@ const NavBar = ({ user }) => {
 
   const handleSearch = () => {
     navigate(`/pesquisar/${user_firstName}`);
-  }
+  };
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
-  }
+  };
 
-  
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(e.target) &&
+        isModalOpen
+      ) {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      // Remova o ouvinte de clique ao desmontar o componente
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [!isModalOpen]);
 
   return (
-    <div>
+    {user} && (
+      <div>
       <nav>
         <div className={classes.navContainer}>
           <div className={classes.search}>
-            <img src="/FaviconLight.png" id={classes.logoBrush} alt="Logo B-Rush" />
-            <input type="text" id={classes.texto} value={user_firstName} name="user_firstName" onChange={(e) => setUserFirstName(e.target.value)} placeholder="Pesquise Aqui" />
+            <img
+              src="/FaviconLight.png"
+              id={classes.logoBrush}
+              alt="Logo B-Rush"
+            />
+            <input
+              type="text"
+              id={classes.texto}
+              value={user_firstName}
+              name="user_firstName"
+              onChange={(e) => setUserFirstName(e.target.value)}
+              placeholder="Pesquise Aqui"
+            />
             <button type="submit" onClick={handleSearch} id={classes.pesquisa}>
               Search
             </button>
           </div>
           <div className={classes.links}>
             <ul className={classes.link}>
-              <li>
+              <li ref={modalRef}>
                 <a onClick={handleModal}>
                   <img
                     src={`http://127.0.0.1:8000/${user.user_image}`}
@@ -54,9 +86,15 @@ const NavBar = ({ user }) => {
                 {isModalOpen && (
                   <div className={classes.modal}>
                     <div className={classes.conteudo}>
-                      <button onClick={() => navigate('/perfil')}><IoPersonCircle/> Perfil</button>
-                      <button onClick={() => navigate('/hub')}><FaRegNewspaper/> Hub</button>
-                      <button id={classes.logout} onClick={handleLogout}><FaDoorOpen/> Logout</button>
+                      <button onClick={() => navigate("/perfil")}>
+                        <IoPersonCircle /> Perfil
+                      </button>
+                      <button onClick={() => navigate("/hub")}>
+                        <FaRegNewspaper /> Hub
+                      </button>
+                      <button id={classes.logout} onClick={handleLogout}>
+                        <FaDoorOpen /> Logout
+                      </button>
                     </div>
                   </div>
                 )}
@@ -66,6 +104,7 @@ const NavBar = ({ user }) => {
         </div>
       </nav>
     </div>
+    )
   );
 };
 

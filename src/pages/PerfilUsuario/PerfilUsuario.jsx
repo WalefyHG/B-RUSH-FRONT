@@ -67,6 +67,13 @@ const Perfil = () => {
     fetchUser();
   }, []);
 
+  const openSocialMediaLink = (link) => {
+    if (link) {
+      const formattedLink = /^https?:\/\//i.test(link) ? link : `http://${link}`;
+      window.open(formattedLink, "_blank");
+    }
+  };
+
   const formatData = (perfil) => {
     const data = perfil;
     const dataFormatada = data.split("T")[0].split("-").reverse().join("/");
@@ -94,7 +101,7 @@ const Perfil = () => {
         <section>
           <div className={classes.bannerContainer}>
             <div className={classes.imgbanner}>
-              <img src={"/Perfil/banner2.png"} className={classes.bannerimg} />
+              <img src={`http://127.0.0.1:8000${perfilData.user_banner}`} className={classes.bannerimg} />
             </div>
             <div className={classes.profileImage}>
               <img
@@ -134,22 +141,22 @@ const Perfil = () => {
             <div className={classes.socialMedias}>
               <ul>
                 <li>
-                  <a href="#">
+                  <a onClick={() => openSocialMediaLink(perfilData.user_instagram)}>
                     <img src="/logos/instagram.png" alt="Instagram" />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a onClick={() => openSocialMediaLink(perfilData.user_twitter)}>
                     <img src="/logos/twitter.png" alt="Twitter" />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a onClick={() => openSocialMediaLink(perfilData.user_twitch)}>
                     <img src="/logos/twitch.png" alt="Twitch" />
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a onClick={() => openSocialMediaLink(perfilData.user_youtube)}>
                     <img src="/logos/youtube.png" alt="Youtube" />
                   </a>
                 </li>
