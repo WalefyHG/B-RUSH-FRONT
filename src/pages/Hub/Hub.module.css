@@ -98,10 +98,20 @@ hr {
 
 .controlSearch {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   gap: 1rem;
   padding: 16px;
+  text-align: center;
+}
+
+.controleSearch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
 }
 
 .card2 {

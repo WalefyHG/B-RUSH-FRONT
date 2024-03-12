@@ -357,6 +357,8 @@ const Hub = () => {
           </div>
           <div className={classes.search}>
             <div className={classes.controlSearch}>
+              <h2>Pesquise sua noticia aqui</h2>
+              <div className={classes.controleSearch}>
               <input
                 type="text"
                 placeholder="Pesquisar"
@@ -373,6 +375,7 @@ const Hub = () => {
               >
                 &#x2715;
               </span>
+              </div>
             </div>
             {searchResults.map((news) => (
               <div
