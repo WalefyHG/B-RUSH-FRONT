@@ -1,0 +1,174 @@
+body{
+    background-color: #111;;
+}
+.mainContainer{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 40vw 1fr;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    background-color: #111;
+    position: relative;
+}
+.listaContatos{
+    width:19vw;
+    height:80vh; /* tecnicamente é pra deixar full height mas ele sobrepassa a pagina criando scroll, 
+    ai é na responsividade, então vou deixar o tamanho que é pra ser */
+    left:40vh;
+    margin-top:10vh;
+    border-radius: 2%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat';
+    background-color: #111;
+    position: relative;
+    background-color: #585858;
+    overflow-y: auto; /* em teoria vai permitir o scrolling da lista de contatos */
+}
+.contato{
+    /* tentarei dando wrapping em um link, qlq coisa faço div wrapped dentro do link */
+    /* Coloquei os textos do contato so no div wrapped dentro do link */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none; 
+    color: #fff;
+    border-bottom: 2px solid purple;
+}
+.contato:hover {
+    background-color: #444;
+}
+.foto{
+    width: 50px;
+    margin-right: 10px; /* quão pra direita o texto de contato vai */
+    border-radius: 50%;
+}
+.contatoInfo {
+    display: flex;
+    flex-direction: column; /* texto fica um em cima do outro */
+}
+
+.nomeContato {
+    margin: 0;
+}
+
+.ultimaMensagem {
+    margin: 0;
+    color: #bbb;    
+}
+.chat {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    height: 80vh;
+    width: 80%;
+    background-color: #585858;
+}
+
+.chatHeader {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    background-color: #333;
+}
+
+.chatFoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chatNome {
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+.chatmensagens {
+    flex: 1;
+    overflow-y: auto;
+    word-wrap: break-word;
+    padding: 10px;
+    background-color: #3f3f3f;
+    box-sizing: border-box;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+.message.sent {
+    text-align: right;
+}
+
+.message.received {
+    text-align: left;
+}
+
+.message p {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.message.sent p {
+    background-color: purple;
+    color: #fff;
+}
+
+.message.received p {
+    background-color: #ddd;
+    color: #000;
+}
+
+.chatInput {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #444;
+    background-color: #333;
+}
+
+#mensagemInput {
+    flex: 1;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    margin-right: 10px;
+    background-color: #444;
+    color: #fff;
+}
+
+#sendMessage {
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    background-color: purple;
+    color: #fff;
+    cursor: pointer;
+}
+
+#sendMessage:hover {
+    background-color: rgb(88, 1, 88);
+}
+.chatmensagens::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.chatmensagens::-webkit-scrollbar-track {
+    background: black; /* Background color of the scrollbar track */
+    border-radius: 10px; /* Rounded corners of the scrollbar track */
+}
+
+.chatmensagens::-webkit-scrollbar-thumb {
+    background: purple; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+}
+
+.chatmensagens::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}

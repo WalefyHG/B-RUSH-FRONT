@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="chat.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="listaContatos">
+            <a href=# class="contato" contato-id="1">
+                <img src="./profile.png" class="foto">
+                <div class="contatoInfo">
+                    <p class="nomeContato">Parceiro</p>
+                    <p class="ultimaMensagem">Ultima mensagem</p>
+                </div>
+            </a>
+            <a href=# class="contato" contato-id="2">
+                <img src="./profile.png" class="foto">
+                <div class="contatoInfo">
+                    <p class="nomeContato">Equipe</p>
+                    <p class="ultimaMensagem">Ultima mensagem</p>
+                </div>
+            </a>
+        </div>
+        <div class="chat" id="chat">
+            <div class="chatHeader" id="chatHeader">
+                <img src="" class="chatFoto" id="chatFoto" alt="Foto de Perfil">
+                <p class="chatNome" id="chatNome"></p>
+            </div>
+            <div class="chatmensagens" id="chatmensagens"> <!-- era pra ter escrito chatMensagens-->
+            <!-- onde a mágica acontece-->
+            </div>
+            <div class="chatInput">
+                <input type="text" id="mensagemInput" placeholder="Escreva algo...">
+                <button id="sendMessage">enviar</button>
+            </div>
+        </div>
+    </div>
+    <script src="chat.js"></script>
+</body>
+</html>
